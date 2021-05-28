@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Open Apparel Registry | Embeded Map Test | Full Width </title>
+    </head>
+    <body>
+        <h1>Open Apparel Registry</h1>
+        <h2>Full Width Embeded Map Test</h2>
+        <div>
+            Available query string arguments: host, protocol, contributors, height
+        </div>
+        <script>
+         const params = new URLSearchParams(window.location.search);
+         const host = params.get('host') || 'staging.openapparel.org';
+         const protocol = params.get('protocol') || 'https';
+         const contributors = params.get('contributors') || '0';
+         const height = params.get('height') || '50';
+
+         const iframe = document.createElement("iframe");
+         iframe.setAttribute('src', protocol + '://' + host + '/?contributors=' + contributors + '&embed=1');
+         iframe.setAttribute('frameBorder', '0');
+         iframe.setAttribute('allowfullscreen', '');
+         iframe.setAttribute('style', 'position:absolute;top:0;left:0;width:100%;height:100%;' );
+         iframe.setAttribute('title', 'embeded-map')
+
+         const outerDiv = document.createElement('div');
+         const innerDiv = document.createElement('div');
+         innerDiv.setAttribute('style', 'position:relative;padding-top:' + height + '%;');
+
+         innerDiv.appendChild(iframe);
+         outerDiv.appendChild(innerDiv);
+         document.body.appendChild(outerDiv);
+        </script>
+    </body>
+</html>

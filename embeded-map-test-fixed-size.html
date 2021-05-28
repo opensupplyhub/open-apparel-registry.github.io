@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Open Apparel Registry | Embeded Map Test | Fixed Size</title>
+    </head>
+    <body>
+        <h1>Open Apparel Registry</h1>
+        <h2>Fixed Size Embeded Map Test</h2>
+        <div>
+            Available query string arguments: host, protocol, contributors, width, height
+        </div>
+        <script>
+         const params = new URLSearchParams(window.location.search);
+         const host = params.get('host') || 'staging.openapparel.org';
+         const protocol = params.get('protocol') || 'https';
+         const contributors = params.get('contributors') || '0';
+         const width = params.get('width') || '1000';
+         const height = params.get('height') || '600';
+
+         const iframe = document.createElement("iframe");
+         iframe.setAttribute('src', protocol + '://' + host + '/?contributors=' + contributors + '&embed=1');
+         iframe.setAttribute('frameBorder', '0');
+         iframe.setAttribute('style', 'width:' + width + 'px;height:' + height + 'px');
+         iframe.setAttribute('title', 'embeded-map')
+
+         document.body.appendChild(iframe);
+        </script>
+    </body>
+</html>
